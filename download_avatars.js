@@ -1,8 +1,7 @@
 var request = require('request');
 var fs = require('fs');
 var GITHUB_USER = "rachaeltopp";
-var GITHUB_TOKEN = "b70c36951efd7bf53c616a6e3498b724236a400a";
-
+var GITHUB_TOKEN = "ddcccbb8a9a08fdaf9d6b702993b2fd58ebd0097";
 
 //console.log('Welcome to the GitHub Avatar Downloader!');
 
@@ -16,9 +15,8 @@ function getRepoContributors(repoOwner, repoName, cb) {
   });
 };
 
-getRepoContributors("jquery", "jquery", function(err, userInfos) {
+getRepoContributors(process.argv[2], process.argv[3], function(err, userInfos) {
   console.log("Errors:", err);
-  //console.log("Result:", result);
   for (var userInfo in userInfos) {
     downloadImageByURL(userInfos[userInfo].avatar_url, userInfos[userInfo].login);
   }
